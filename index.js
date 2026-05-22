@@ -14,7 +14,7 @@ const app = express()
 const CLIENT_URLS = [
   'http://localhost:5173',
   'http://localhost:4173',
-  'https://yourfrontend.com',
+  'https://codemesh1.netlify.app/',
   'https://www.yourfrontend.com'
 ]
 

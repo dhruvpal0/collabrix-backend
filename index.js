@@ -11,15 +11,30 @@ import authRouter from './controller/auth.js'
 
 const app = express()
 
-const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:5173'
+const CLIENT_URLS = [
+  'http://localhost:5173',
+  'http://localhost:4173',
+  'https://yourfrontend.com',
+  'https://www.yourfrontend.com'
+]
 
-app.use(cors({ origin: CLIENT_URL }))
+app.use(cors({
+  origin: CLIENT_URLS,
+  credentials: true
+}))
+
+const io = new Server(httpServer, {
+  cors: {
+    origin: CLIENT_URLS,
+    credentials: true
+  }
+})
 app.use(express.json())
 
 const httpServer = createServer(app)
-const io = new Server(httpServer, {
-  cors: { origin: CLIENT_URL }
-})
+// const io = new Server(httpServer, {
+//   cors: { origin: CLIENT_URL }
+// })
 
 // ── Health check — Render ke liye zaroori ──
 app.get('/', (req, res) => res.json({ status: 'CodeTogether server running' }))

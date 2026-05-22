@@ -22,6 +22,9 @@ app.use(cors({
   origin: CLIENT_URLS,
   credentials: true
 }))
+app.use(express.json())
+
+const httpServer = createServer(app)
 
 const io = new Server(httpServer, {
   cors: {
@@ -29,9 +32,7 @@ const io = new Server(httpServer, {
     credentials: true
   }
 })
-app.use(express.json())
 
-const httpServer = createServer(app)
 // const io = new Server(httpServer, {
 //   cors: { origin: CLIENT_URL }
 // })

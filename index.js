@@ -16,6 +16,7 @@ const CLIENT_URLS = [
   'http://localhost:4173',
   'https://codemesh1.netlify.app',
   'https://www.codemesh1.netlify.app',
+  'https://codetogether2.netlify.app',
 ]
 
 app.use(cors({
